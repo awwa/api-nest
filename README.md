@@ -75,3 +75,16 @@ Nest is [MIT licensed](LICENSE).
 ## プロジェクト構築手順
 
 - https://docs.nestjs.com/first-steps
+
+## 調査タスク一覧
+
+- Request validation
+- Authentication
+- Authorization
+- Logging
+- Testing
+- OpenAPI
+- TypeORM & DB Migration
+- Environment variables
+- AWS Lambda
+- CI/CD
