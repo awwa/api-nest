@@ -81,6 +81,8 @@ Nest is [MIT licensed](LICENSE).
 - Request validation
 - Authentication
 - Authorization
+- Amazon Cognito
+- Exception handling
 - Logging
 - Testing
 - OpenAPI
