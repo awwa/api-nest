@@ -78,7 +78,7 @@ Nest is [MIT licensed](LICENSE).
 
 ## 調査タスク一覧
 
-- [x] Request validation
+- [x] [Request validation](https://docs.nestjs.com/pipes)
   ```json settings.json
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
