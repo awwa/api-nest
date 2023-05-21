@@ -9,6 +9,7 @@ import {
   Req,
   ForbiddenException,
   InternalServerErrorException,
+  Logger,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
@@ -18,6 +19,8 @@ import { ValidationPipe } from '../validation.pipe';
 
 @Controller('cars')
 export class CarsController {
+  private readonly logger = new Logger(CarsController.name);
+
   constructor(private readonly carsService: CarsService) {}
 
   @Post()
@@ -27,7 +30,10 @@ export class CarsController {
 
   @Get()
   findAll(@Req() request: Request): string {
-    console.log(request.query);
+    this.logger.log(request.query);
+    this.logger.debug(request.query);
+    this.logger.verbose(request.query);
+    this.logger.warn(request.query);
     return this.carsService.findAll();
   }
 

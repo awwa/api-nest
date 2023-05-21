@@ -88,7 +88,7 @@ Nest is [MIT licensed](LICENSE).
 - [ ] Authorization
 - [ ] Amazon Cognito
 - [x] [Exception handling](https://docs.nestjs.com/exception-filters)
-- [ ] Logging
+- [x] [Logging](https://docs.nestjs.com/techniques/logger)
 - [ ] Testing
 - [ ] OpenAPI
 - [ ] TypeORM & DB Migration
