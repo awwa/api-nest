@@ -78,15 +78,20 @@ Nest is [MIT licensed](LICENSE).
 
 ## 調査タスク一覧
 
-- Request validation
-- Authentication
-- Authorization
-- Amazon Cognito
-- Exception handling
-- Logging
-- Testing
-- OpenAPI
-- TypeORM & DB Migration
-- Environment variables
-- AWS Lambda
-- CI/CD
+- [x] Request validation
+  ```json settings.json
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+  ```
+- [ ] Authentication
+- [ ] Authorization
+- [ ] Amazon Cognito
+- [ ] Exception handling
+- [ ] Logging
+- [ ] Testing
+- [ ] OpenAPI
+- [ ] TypeORM & DB Migration
+- [ ] Environment variables
+- [ ] AWS Lambda
+- [ ] CI/CD

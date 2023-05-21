@@ -12,13 +12,14 @@ import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Request } from 'express';
+import { ValidationPipe } from '../validation.pipe';
 
 @Controller('cars')
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Post()
-  create(@Body() createCarDto: CreateCarDto) {
+  async create(@Body(new ValidationPipe()) createCarDto: CreateCarDto) {
     return this.carsService.create(createCarDto);
   }
 
