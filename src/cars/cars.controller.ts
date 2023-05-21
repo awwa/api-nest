@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   Req,
+  ForbiddenException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
@@ -41,6 +43,12 @@ export class CarsController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
+    if (id === 'forbidden') {
+      throw new ForbiddenException('hoge');
+    }
+    if (id === 'internalservererror') {
+      throw new InternalServerErrorException('fuga');
+    }
     return this.carsService.remove(+id);
   }
 }
