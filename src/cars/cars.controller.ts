@@ -23,11 +23,17 @@ export class CarsController {
 
   constructor(private readonly carsService: CarsService) {}
 
+  /**
+   * 新しいクルマを登録する
+   */
   @Post()
   async create(@Body(new ValidationPipe()) createCarDto: CreateCarDto) {
     return this.carsService.create(createCarDto);
   }
 
+  /**
+   * リクエストで指定した条件に該当するクルマ配列を取得する
+   */
   @Get()
   findAll(@Req() request: Request): string {
     this.logger.log(request.query);

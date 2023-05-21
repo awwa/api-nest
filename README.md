@@ -90,7 +90,8 @@ Nest is [MIT licensed](LICENSE).
 - [x] [Exception handling](https://docs.nestjs.com/exception-filters)
 - [x] [Logging](https://docs.nestjs.com/techniques/logger)
 - [ ] Testing
-- [ ] OpenAPI
+- [x] [OpenAPI](https://docs.nestjs.com/openapi/introduction)
+  - [x] [CLI Plugin](https://docs.nestjs.com/openapi/cli-plugin)
 - [ ] TypeORM & DB Migration
 - [ ] Environment variables
 - [ ] AWS Lambda

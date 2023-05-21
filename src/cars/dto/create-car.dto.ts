@@ -1,12 +1,22 @@
-import { IsString, IsInt } from 'class-validator';
+// import { ApiProperty } from '@nestjs/swagger';
+// import { IsString, IsInt } from 'class-validator';
 
 export class CreateCarDto {
-  @IsString()
+  /**
+   * クルマのID
+   * @example 'car_1'
+   */
   id: string;
 
-  @IsInt()
+  /**
+   * クルマの価格
+   * @example 3400000
+   */
   price: number;
 
-  @IsString()
+  /**
+   * クルマのモデル名
+   * @example 'マツダ3'
+   */
   modelName: string;
 }
