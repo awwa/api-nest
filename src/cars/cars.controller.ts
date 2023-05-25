@@ -58,12 +58,12 @@ export class CarsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.carsService.findOne(+id);
+    return this.carsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
-    return this.carsService.update(+id, updateCarDto);
+    return this.carsService.update(id, updateCarDto);
   }
 
   @Delete(':id')
@@ -74,6 +74,6 @@ export class CarsController {
     if (id === 'internalservererror') {
       throw new InternalServerErrorException('fuga');
     }
-    return this.carsService.remove(+id);
+    return this.carsService.remove(id);
   }
 }
