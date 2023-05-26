@@ -1,6 +1,8 @@
 # compiled output
 /dist
 /node_modules
+/api-client
+openapi.yaml
 
 # Logs
 logs

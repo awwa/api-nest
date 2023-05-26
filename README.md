@@ -89,9 +89,17 @@ Nest is [MIT licensed](LICENSE).
 - [ ] Amazon Cognito
 - [x] [Exception handling](https://docs.nestjs.com/exception-filters)
 - [x] [Logging](https://docs.nestjs.com/techniques/logger)
-- [ ] Testing
+- [x] Testing
 - [x] [OpenAPI](https://docs.nestjs.com/openapi/introduction)
+
   - [x] [CLI Plugin](https://docs.nestjs.com/openapi/cli-plugin)
+  - [x] [Generate api document](https://qiita.com/yktakaha4/items/97ea169ed97dbcdd25fb)
+  - [x] [Generate api client](https://github.com/OpenAPITools/openapi-generator-cli)
+
+  ```
+    npm run openapi
+  ```
+
 - [ ] TypeORM & DB Migration
 - [x] [Environment variables](https://docs.nestjs.com/techniques/configuration)
 - [ ] AWS Lambda
