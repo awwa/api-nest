@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
+import { Car } from './entities/car.entity';
+import { QueryCarDto } from './dto/query-car.dto';
 
 describe('CarsService', () => {
   let service: CarsService;
@@ -22,8 +24,10 @@ describe('CarsService', () => {
     expect(service.create(dto)).toEqual('This action adds a new car');
   });
 
-  it('findAll() should return a string', () => {
-    expect(service.findAll()).toEqual('This action returns all cars');
+  it('findByQuery) should return car list', () => {
+    const expected = [new Car('car_1', 3420000, 'マツダ3')];
+    const query = new QueryCarDto('マツダ3');
+    expect(service.findByQuery(query)).toEqual(expected);
   });
 
   it('findOne() should return a string', () => {

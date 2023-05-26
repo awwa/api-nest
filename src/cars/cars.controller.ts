@@ -6,17 +6,18 @@ import {
   Patch,
   Param,
   Delete,
-  Req,
   ForbiddenException,
   InternalServerErrorException,
   Logger,
+  Query,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
-import { Request } from 'express';
 import { ValidationPipe } from '../validation.pipe';
 import { ConfigService } from '@nestjs/config';
+import { Car } from './entities/car.entity';
+import { QueryCarDto } from './dto/query-car.dto';
 
 @Controller('cars')
 export class CarsController {
@@ -44,21 +45,18 @@ export class CarsController {
     return this.carsService.create(createCarDto);
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.carsService.findOne(id);
+  }
+
   /**
    * リクエストで指定した条件に該当するクルマ配列を取得する
    */
   @Get()
-  findAll(@Req() request: Request): string {
-    this.logger.log(request.query);
-    this.logger.debug(request.query);
-    this.logger.verbose(request.query);
-    this.logger.warn(request.query);
-    return this.carsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.carsService.findOne(id);
+  findByQuery(@Query(new ValidationPipe()) query: QueryCarDto): Array<Car> {
+    this.logger.verbose(query.modelName);
+    return this.carsService.findByQuery(query);
   }
 
   @Patch(':id')
