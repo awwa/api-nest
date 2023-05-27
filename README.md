@@ -95,10 +95,12 @@ Nest is [MIT licensed](LICENSE).
   - [x] [CLI Plugin](https://docs.nestjs.com/openapi/cli-plugin)
   - [x] [Generate api document](https://qiita.com/yktakaha4/items/97ea169ed97dbcdd25fb)
   - [x] [Generate api client](https://github.com/OpenAPITools/openapi-generator-cli)
+        openapi.yaml の生成
+        TypeScript 用 API クライアント生成
 
-  ```
-    npm run openapi
-  ```
+        ```
+          npm run openapi
+        ```
 
 - [ ] TypeORM & DB Migration
 - [x] [Environment variables](https://docs.nestjs.com/techniques/configuration)
