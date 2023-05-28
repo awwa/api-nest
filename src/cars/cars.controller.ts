@@ -10,14 +10,16 @@ import {
   InternalServerErrorException,
   Logger,
   Query,
+  HttpStatus,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
+import { QueryCarDto } from './dto/query-car.dto';
 import { ValidationPipe } from '../validation.pipe';
 import { ConfigService } from '@nestjs/config';
 import { Car } from './entities/car.entity';
-import { QueryCarDto } from './dto/query-car.dto';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('cars')
 export class CarsController {
@@ -46,7 +48,8 @@ export class CarsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  @ApiResponse({ status: HttpStatus.OK, type: Car })
+  findOne(@Param('id') id: string): Car {
     return this.carsService.findOne(id);
   }
 

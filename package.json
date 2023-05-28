@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "openapi": "npm run openapi:export && npm run openapi:generate",
     "openapi:export": "ts-node src/openapi/export-openapi-document.ts",
-    "openapi:generate": "rm -rf ./api-client/*; npx openapi-generator-cli generate -g typescript-axios -i ./openapi.yaml -o ./api-client"
+    "openapi:generate": "rm -rf ./api-client/*; npx openapi-generator-cli generate -g typescript-fetch -i ./openapi.yaml -o ./api-client"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

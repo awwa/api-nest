@@ -23,8 +23,8 @@ export class CarsService {
     return cars;
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} car`;
+  findOne(id: string): Car {
+    return new Car('car_1', 3420000, 'マツダ3');
   }
 
   update(id: string, updateCarDto: UpdateCarDto) {
