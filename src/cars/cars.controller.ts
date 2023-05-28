@@ -10,7 +10,6 @@ import {
   InternalServerErrorException,
   Logger,
   Query,
-  HttpStatus,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
@@ -19,9 +18,25 @@ import { QueryCarDto } from './dto/query-car.dto';
 import { ValidationPipe } from '../validation.pipe';
 import { ConfigService } from '@nestjs/config';
 import { Car } from './entities/car.entity';
-import { ApiResponse } from '@nestjs/swagger';
+import {
+  ApiExtraModels,
+  ApiHeader,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags,
+  getSchemaPath,
+} from '@nestjs/swagger';
+// import { PaginatedDto } from 'src/openapi/paginated-dto';
+import { CarDto } from './dto/car.dto';
+import { ApiPaginatedResponse } from 'src/openapi/api-pagenated-response';
 
+@ApiHeader({
+  name: 'X-MyHeader',
+  description: 'Custom header',
+})
+@ApiTags('cars')
 @Controller('cars')
+// @ApiExtraModels(PaginatedDto)
 export class CarsController {
   private readonly logger = new Logger(CarsController.name);
 
@@ -48,7 +63,10 @@ export class CarsController {
   }
 
   @Get(':id')
-  @ApiResponse({ status: HttpStatus.OK, type: Car })
+  @ApiNotFoundResponse({
+    description: '指定したidのデータが見つからなかった。',
+  })
+  @ApiOkResponse({ description: '指定したidのデータが見つかった。', type: Car })
   findOne(@Param('id') id: string): Car {
     return this.carsService.findOne(id);
   }
@@ -60,6 +78,19 @@ export class CarsController {
   findByQuery(@Query(new ValidationPipe()) query: QueryCarDto): Array<Car> {
     this.logger.verbose(query.modelName);
     return this.carsService.findByQuery(query);
+  }
+
+  @Get('pagenated')
+  // @ApiPaginatedResponse(CarDto)
+  async findPagenatedByQuery(
+    @Query(new ValidationPipe()) query: QueryCarDto,
+  ): /*Promise<PaginatedDto<CarDto>>*/ Promise<CarDto> {
+    const cars = await this.carsService.findByQuery(query);
+    // const resp = new PaginatedDto<CarDto>();
+    // resp.results = cars.map((car) => new CarDto().fromEntity(car));
+    // return resp;
+    const dtos = cars.map((car) => new CarDto().fromEntity(car));
+    return dtos[0];
   }
 
   @Patch(':id')

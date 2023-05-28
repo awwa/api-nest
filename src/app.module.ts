@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { CarsModule } from './cars/cars.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
+// import { PaginatedDto } from './openapi/paginated-dto';
 
 @Module({
   imports: [
